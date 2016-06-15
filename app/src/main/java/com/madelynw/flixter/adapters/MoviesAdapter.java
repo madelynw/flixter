@@ -24,15 +24,30 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         super(context, android.R.layout.simple_list_item_1, movies);
     }
 
+    // View lookup cache
+    private static class ViewHolder {
+        TextView tvTitle;
+        TextView tvOverview;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
         Movie movie = getItem(position);
 
+        // View lookup cache
+        ViewHolder viewHolder;
+
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
+            viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_movie, parent, false);
+            viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
+            viewHolder.tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // Find the image view
@@ -40,14 +55,14 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         // Clear out image from convertView
         ivImage.setImageResource(0);
 
-        TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        TextView tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
+        // Populate the data into the template view using the data object
+        viewHolder.tvTitle.setText(movie.getOriginalTitle());
+        viewHolder.tvOverview.setText(movie.getOverview());
 
-        // Populate data
-        tvTitle.setText(movie.getOriginalTitle());
-        tvOverview.setText(movie.getOverview());
-
+        // Load images
         Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
+
+        // Debugging
         Log.d("MoviesAdapter", "Position: " + position);
 
         // Return the view
