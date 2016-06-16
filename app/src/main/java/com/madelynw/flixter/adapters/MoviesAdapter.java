@@ -66,15 +66,17 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         viewHolder.tvTitle.setText(movie.getOriginalTitle());
         viewHolder.tvOverview.setText(movie.getOverview());
 
-        // Load images
-
+        // Check if in landscape mode or not
         boolean isLandscape = getContext().getResources().getConfiguration().orientation ==
                 Configuration.ORIENTATION_LANDSCAPE;
+
+        // Load images
         if (isLandscape) {
             Picasso.with(getContext()).load(movie.getBackdropPath())
                     .placeholder(R.mipmap.video_camera)
                     .error(R.mipmap.video_camera)
                     .transform(new RoundedCornersTransformation(10, 10))
+                    .resize(900, 0)
                     .into(ivImage);
         } else {
             Picasso.with(getContext()).load(movie.getPosterPath())
