@@ -1,5 +1,6 @@
 package com.madelynw.flixter;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,17 +25,39 @@ public class MoviesActivity extends AppCompatActivity {
     MoviesAdapter moviesAdapter;
     ListView lvItems;
 
+    String url;
+    AsyncHttpClient client;
+
+    private SwipeRefreshLayout swipeContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
 
+        // Lookup the swipe container view.
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+
+        // Setup refresh listener which triggers new data loading.
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                update();
+            }
+        });
+        // Configure the refreshing colors.
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
         lvItems = (ListView) findViewById(R.id.lvMovies);
         movies = new ArrayList<>();
         moviesAdapter = new MoviesAdapter(this, movies);
         lvItems.setAdapter(moviesAdapter);
-        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
-        AsyncHttpClient client = new AsyncHttpClient();
+        url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+        client = new AsyncHttpClient();
 
         client.get(url, new JsonHttpResponseHandler(){
             @Override
@@ -59,4 +82,35 @@ public class MoviesActivity extends AppCompatActivity {
         });
 
     }
+
+    public void update() {
+        // Send the network request to fetch the updated data
+        // `client` here is an instance of Android Async HTTP
+        client.get(url, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                JSONArray movieJSONResults = null;
+
+                // Clear out old items before appending in the new ones.
+                moviesAdapter.clear();
+
+                try {
+                    // Getting new data and adding it to the adapter.
+                    movieJSONResults = response.getJSONArray("results");
+                    movies.addAll(Movie.fromJSONArray(movieJSONResults));
+                    moviesAdapter.notifyDataSetChanged();
+                    
+                    // Call setRefreshing(false) to signal refresh has finished.
+                    swipeContainer.setRefreshing(false);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.d("DEBUG", "Fetch timeline error: " + throwable.toString());
+            }
+        });
+    }
+
 }
