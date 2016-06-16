@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.madelynw.flixter.R;
 import com.madelynw.flixter.models.Movie;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -64,7 +65,12 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         // Load images
         //Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
         Picasso.with(getContext()).load(movie.getPosterPath())
-                .transform(new RoundedCornersTransformation(10, 10)).into(ivImage);
+                .fit()
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .transform(new RoundedCornersTransformation(10, 10))
+                .into(ivImage);
+
 
         // Debugging
         Log.d("MoviesAdapter", "Position: " + position);

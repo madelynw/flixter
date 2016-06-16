@@ -98,7 +98,7 @@ public class MoviesActivity extends AppCompatActivity {
                     movieJSONResults = response.getJSONArray("results");
                     movies.addAll(Movie.fromJSONArray(movieJSONResults));
                     moviesAdapter.notifyDataSetChanged();
-                    
+
                     // Call setRefreshing(false) to signal refresh has finished.
                     swipeContainer.setRefreshing(false);
                 } catch (JSONException e) {
