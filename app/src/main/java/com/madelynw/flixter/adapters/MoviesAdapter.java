@@ -65,7 +65,6 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         // Load images
         //Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
         Picasso.with(getContext()).load(movie.getPosterPath())
-                .fit()
                 .placeholder(R.mipmap.video_camera)
                 .error(R.mipmap.video_camera)
                 .transform(new RoundedCornersTransformation(10, 10))
