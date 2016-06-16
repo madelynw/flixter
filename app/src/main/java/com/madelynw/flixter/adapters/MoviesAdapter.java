@@ -1,6 +1,9 @@
 package com.madelynw.flixter.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +58,7 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
 
         // Find the image view
         ImageView ivImage = (ImageView) convertView.findViewById(R.id.ivPoster);
+
         // Clear out image from convertView
         ivImage.setImageResource(0);
 
@@ -63,13 +67,22 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         viewHolder.tvOverview.setText(movie.getOverview());
 
         // Load images
-        //Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
-        Picasso.with(getContext()).load(movie.getPosterPath())
-                .placeholder(R.mipmap.video_camera)
-                .error(R.mipmap.video_camera)
-                .transform(new RoundedCornersTransformation(10, 10))
-                .into(ivImage);
 
+        boolean isLandscape = getContext().getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_LANDSCAPE;
+        if (isLandscape) {
+            Picasso.with(getContext()).load(movie.getBackdropPath())
+                    .placeholder(R.mipmap.video_camera)
+                    .error(R.mipmap.video_camera)
+                    .transform(new RoundedCornersTransformation(10, 10))
+                    .into(ivImage);
+        } else {
+            Picasso.with(getContext()).load(movie.getPosterPath())
+                    .placeholder(R.mipmap.video_camera)
+                    .error(R.mipmap.video_camera)
+                    .transform(new RoundedCornersTransformation(10, 10))
+                    .into(ivImage);
+        }
 
         // Debugging
         Log.d("MoviesAdapter", "Position: " + position);
