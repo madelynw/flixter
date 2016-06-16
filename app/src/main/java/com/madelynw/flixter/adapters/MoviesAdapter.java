@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
@@ -36,6 +38,9 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
         TextView tvOverview;
     }
 
+    //@BindView(R.id.tvTitle) TextView title;
+    //@BindView(R.id.tvOverview) TextView overview;
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
@@ -51,6 +56,8 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
             convertView = inflater.inflate(R.layout.item_movie, parent, false);
             viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
             viewHolder.tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
+            //viewHolder.tvTitle = (TextView) convertView.findViewById(title);
+            //viewHolder.tvOverview = (TextView) convertView.findViewById(overview);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

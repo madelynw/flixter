@@ -1,9 +1,13 @@
 package com.madelynw.flixter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -17,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class MoviesActivity extends AppCompatActivity {
@@ -34,6 +39,8 @@ public class MoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+
+        ButterKnife.bind(this);
 
         // Lookup the swipe container view.
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
@@ -81,6 +88,8 @@ public class MoviesActivity extends AppCompatActivity {
             }
         });
 
+        setupListener();
+
     }
 
     public void update() {
@@ -111,6 +120,22 @@ public class MoviesActivity extends AppCompatActivity {
                 Log.d("DEBUG", "Fetch timeline error: " + throwable.toString());
             }
         });
+    }
+
+    private void setupListener() {
+        // Sets up listener so that when the user clicks on a movie, the
+        // details page appears
+        lvItems.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapter,
+                                            View item, int pos, long id) {
+                        Intent i = new Intent(MoviesActivity.this, DetailsActivity.class);
+                        i.putExtra("ID", id);
+                        i.putExtra("Position", pos);
+                        startActivity(i);
+                    }
+                });
     }
 
 }
