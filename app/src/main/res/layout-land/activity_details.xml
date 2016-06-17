@@ -12,11 +12,13 @@
         android:id="@+id/ivPoster"
         tools:src="@mipmap/ic_launcher"
         android:scaleType="centerCrop"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="135dp"
-        android:layout_marginStart="135dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/tvTitle"
+        android:layout_toStartOf="@+id/tvTitle"
+        android:layout_marginRight="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +29,8 @@
         android:id="@+id/tvTitle"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/rbRating"
-        android:layout_alignStart="@+id/rbRating" />
+        android:layout_alignStart="@+id/rbRating"
+        android:textAlignment="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +51,9 @@
         android:scaleY="0.5"
         android:layout_below="@+id/tvTitle"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:focusable="false"
+        android:clickable="false"/>
 
     <TextView
         android:layout_width="wrap_content"
