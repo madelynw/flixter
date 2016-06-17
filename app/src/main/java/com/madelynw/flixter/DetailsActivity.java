@@ -1,35 +1,52 @@
 package com.madelynw.flixter;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.madelynw.flixter.R;
+import com.madelynw.flixter.models.Movie;
+import com.squareup.picasso.Picasso;
+
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class DetailsActivity extends AppCompatActivity {
-
-    RatingBar rbRating;
-    TextView tvTitle;
-    TextView tvRelease;
-    TextView tvOverview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        Movie movie = (Movie) getIntent().getSerializableExtra("Movie");
 
-        /**
-        String id = getIntent().getStringExtra("ID");
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvTitle = getIntent().getStringExtra("ID");
+        TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvTitle.setText(movie.getOriginalTitle());
 
-        etEnterItem = (EditText) findViewById(R.id.etEnterItem);
-        etEnterItem.setText(getIntent().getStringExtra("Task"));
-        etEnterItem.setSelection(etEnterItem.getText().length());
-         */
+        TextView tvRelease = (TextView) findViewById(R.id.tvRelease);
+        tvRelease.setText("Release Date: " + movie.getReleaseDate());
+
+        TextView tvOverview = (TextView) findViewById(R.id.tvOverview);
+        tvOverview.setText(movie.getOverview());
+
+        RatingBar rbRating = (RatingBar) findViewById(R.id.rbRating);
+        rbRating.setRating(movie.getRating());
+
+        // Find the image view
+        ImageView ivImage = (ImageView) findViewById(R.id.ivPoster);
+
+        // Clear out image from convertView
+        ivImage.setImageResource(0);
+
+        // Load images
+        Picasso.with(this).load(movie.getBackdropPath())
+                .placeholder(R.mipmap.video_camera)
+                .error(R.mipmap.video_camera)
+                .transform(new RoundedCornersTransformation(10, 10))
+                .into(ivImage);
 
     }
 }

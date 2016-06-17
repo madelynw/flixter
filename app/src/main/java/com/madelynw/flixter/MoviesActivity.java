@@ -132,8 +132,9 @@ public class MoviesActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapter,
                                             View item, int pos, long id) {
                         Intent i = new Intent(MoviesActivity.this, DetailsActivity.class);
-                        i.putExtra("ID", id);
                         i.putExtra("Position", pos);
+                        Movie movie = movies.get(pos);
+                        i.putExtra("Movie", movie);
                         startActivity(i);
                     }
                 });

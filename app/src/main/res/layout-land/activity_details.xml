@@ -14,9 +14,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/ivPoster"
         tools:src="@mipmap/ic_launcher"
-        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="135dp"
+        android:layout_marginStart="135dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,16 +28,16 @@
         tools:text="The Do-Over"
         android:textSize="26sp"
         android:id="@+id/tvTitle"
-        android:layout_alignBottom="@+id/ivPoster"
-        android:layout_alignLeft="@+id/rbRating"
-        android:layout_alignStart="@+id/rbRating" />
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/tvRelease"
+        android:layout_alignEnd="@+id/tvRelease" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="The life of a bank manager is turned upside down when a friend from his past manipulates him into faking his own death and taking off on an adventure."
         android:id="@+id/tvOverview"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/tvRelease"
         android:layout_alignLeft="@+id/tvRelease"
         android:layout_alignStart="@+id/tvRelease" />
 
@@ -43,11 +46,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/rbRating"
         android:numStars="5"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
         android:layout_below="@+id/tvTitle"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:scaleX="0.5"
-        android:scaleY="0.5"/>
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,6 +60,5 @@
         android:id="@+id/tvRelease"
         android:layout_below="@+id/rbRating"
         android:layout_alignLeft="@+id/rbRating"
-        android:layout_alignStart="@+id/rbRating"
-        android:layout_marginBottom="3dp"/>
+        android:layout_alignStart="@+id/rbRating" />
 </RelativeLayout>
