@@ -3,6 +3,7 @@ package com.madelynw.flixter;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -31,6 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         TextView tvOverview = (TextView) findViewById(R.id.tvOverview);
         tvOverview.setText(movie.getOverview());
+        tvOverview.setMovementMethod(new ScrollingMovementMethod());
 
         RatingBar rbRating = (RatingBar) findViewById(R.id.rbRating);
         rbRating.setRating(movie.getRating());
