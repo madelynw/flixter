@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:text="The Do-Over"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:id="@+id/tvTitle"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/rbRating"
@@ -45,7 +45,8 @@
         android:layout_alignStart="@+id/tvRelease"
         android:scrollbars = "vertical"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textSize="13sp"/>
 
     <RatingBar
         style="?android:attr/ratingBarStyleIndicator"
@@ -73,5 +74,6 @@
         android:layout_marginBottom="3dp"
         android:paddingBottom="3dp"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textSize="13sp"/>
 </RelativeLayout>

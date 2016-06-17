@@ -24,7 +24,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:text="The Do-Over"
         android:id="@+id/tvTitle"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivPoster"
         android:layout_toEndOf="@+id/ivPoster"
@@ -33,7 +33,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="6dp"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,5 +47,6 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textSize="13sp"/>
 </RelativeLayout>

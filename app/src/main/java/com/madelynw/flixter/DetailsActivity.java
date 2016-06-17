@@ -44,7 +44,7 @@ public class DetailsActivity extends AppCompatActivity {
         ivImage.setImageResource(0);
 
         // Load images
-        if (movie.backdropPath() != null) {
+        if (!movie.backdropPath().equals("null")) {
             Picasso.with(this).load(movie.getBackdropPath())
                     .placeholder(R.mipmap.video_camera)
                     .error(R.mipmap.video_camera)
