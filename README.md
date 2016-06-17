@@ -25,7 +25,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [X] Added pull-to-refresh feature.
+* [x] Added pull-to-refresh feature.
+* [x] Added scrollbars for overview in detail mode.
 
 ## Video Walkthrough
 
