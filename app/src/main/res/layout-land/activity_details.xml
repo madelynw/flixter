@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsActivity"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/black">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -30,7 +31,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/rbRating"
         android:layout_alignStart="@+id/rbRating"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,9 +42,11 @@
         android:layout_below="@+id/tvRelease"
         android:layout_alignLeft="@+id/tvRelease"
         android:layout_alignStart="@+id/tvRelease"
-        android:scrollbars = "vertical"/>
+        android:scrollbars = "vertical"
+        android:textColor="@color/white"/>
 
     <RatingBar
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rbRating"
@@ -65,5 +69,6 @@
         android:layout_alignLeft="@+id/rbRating"
         android:layout_alignStart="@+id/rbRating"
         android:layout_marginBottom="3dp"
-        android:paddingBottom="3dp"/>
+        android:paddingBottom="3dp"
+        android:textColor="@color/white"/>
 </RelativeLayout>

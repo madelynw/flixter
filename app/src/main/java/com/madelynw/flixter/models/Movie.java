@@ -33,6 +33,10 @@ public class Movie implements Serializable {
         return String.format("https://image.tmdb.org/t/p/w342%s", backdropPath);
     }
 
+    public String backdropPath() {
+        return backdropPath;
+    }
+
     public String getReleaseDate() { return releaseDate; }
 
     public float getRating() { return rating; }

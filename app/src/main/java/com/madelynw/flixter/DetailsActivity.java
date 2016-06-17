@@ -44,11 +44,20 @@ public class DetailsActivity extends AppCompatActivity {
         ivImage.setImageResource(0);
 
         // Load images
-        Picasso.with(this).load(movie.getBackdropPath())
-                .placeholder(R.mipmap.video_camera)
-                .error(R.mipmap.video_camera)
-                .transform(new RoundedCornersTransformation(10, 10))
-                .into(ivImage);
+        if (movie.backdropPath() != null) {
+            Picasso.with(this).load(movie.getBackdropPath())
+                    .placeholder(R.mipmap.video_camera)
+                    .error(R.mipmap.video_camera)
+                    .transform(new RoundedCornersTransformation(10, 10))
+                    .into(ivImage);
+        }
+        else {
+            Picasso.with(this).load(movie.getPosterPath())
+                    .placeholder(R.mipmap.video_camera)
+                    .error(R.mipmap.video_camera)
+                    .transform(new RoundedCornersTransformation(10, 10))
+                    .into(ivImage);
+        }
 
     }
 }
