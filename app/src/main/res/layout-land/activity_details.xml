@@ -32,7 +32,8 @@
         android:layout_alignLeft="@+id/rbRating"
         android:layout_alignStart="@+id/rbRating"
         android:textAlignment="center"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
         android:layout_alignLeft="@+id/tvRelease"
         android:layout_alignStart="@+id/tvRelease"
         android:scrollbars = "vertical"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
 
     <RatingBar
         style="?android:attr/ratingBarStyleIndicator"
@@ -70,5 +72,6 @@
         android:layout_alignStart="@+id/rbRating"
         android:layout_marginBottom="3dp"
         android:paddingBottom="3dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
 </RelativeLayout>

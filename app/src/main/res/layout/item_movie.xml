@@ -30,7 +30,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="6dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,5 +44,6 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
 </RelativeLayout>
