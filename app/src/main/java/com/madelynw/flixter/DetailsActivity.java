@@ -20,6 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+
         /**
         String id = getIntent().getStringExtra("ID");
         tvTitle = (TextView) findViewById(R.id.tvTitle);
