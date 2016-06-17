@@ -1,6 +1,5 @@
 package com.madelynw.flixter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -125,6 +125,7 @@ public class MoviesActivity extends AppCompatActivity {
     private void setupListener() {
         // Sets up listener so that when the user clicks on a movie, the
         // details page appears
+
         lvItems.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
