@@ -79,6 +79,8 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
                 Configuration.ORIENTATION_LANDSCAPE;
 
         // Load images
+        // If in landscape mode, use backdrop image.
+        // If there is no backdrop image, use poster image.
         if (isLandscape) {
             if (!movie.backdropPath().equals("null")) {
                 Picasso.with(getContext()).load(movie.getBackdropPath())
