@@ -80,12 +80,20 @@ public class MoviesAdapter extends ArrayAdapter<Movie>{
 
         // Load images
         if (isLandscape) {
-            Picasso.with(getContext()).load(movie.getBackdropPath())
-                    .placeholder(R.mipmap.video_camera)
-                    .error(R.mipmap.video_camera)
-                    .transform(new RoundedCornersTransformation(10, 10))
-                    .resize(900, 0)
-                    .into(ivImage);
+            if (!movie.backdropPath().equals("null")) {
+                Picasso.with(getContext()).load(movie.getBackdropPath())
+                        .placeholder(R.mipmap.video_camera)
+                        .error(R.mipmap.video_camera)
+                        .transform(new RoundedCornersTransformation(10, 10))
+                        .resize(900, 0)
+                        .into(ivImage);
+            } else {
+                Picasso.with(getContext()).load(movie.getPosterPath())
+                        .placeholder(R.mipmap.video_camera)
+                        .error(R.mipmap.video_camera)
+                        .transform(new RoundedCornersTransformation(10, 10))
+                        .into(ivImage);
+            }
         } else {
             Picasso.with(getContext()).load(movie.getPosterPath())
                     .placeholder(R.mipmap.video_camera)
